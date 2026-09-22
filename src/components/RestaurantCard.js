@@ -6,11 +6,15 @@ const RestaurantCard=(props)=>{
   backgroundColor:"#f0f0f0",
 }}>
   <img className="res-logo"
-   src={resData.img} alt="res img"></img>
-      <h3>{resData.name}</h3>
-      <h4><i>{resData.cuisine}</i></h4>
-      <h4>{resData.rating}</h4>
-      <h4> {resData.deliveryTime}</h4>
+   src={"https://media-assets.swiggy.com/swiggy/image/upload/" +
+          resData.info.cloudinaryImageId}  alt="res img"
+  onError={(e) => {
+    e.target.src =
+      "https://images.unsplash.com/photo-1547592180-85f173990554";}}></img>
+      <h3>{resData.info.name}</h3>
+      <h4><i>{resData.info.cuisines.join(" , ")}</i></h4>
+      <h4>{resData.info.avgRating}</h4>
+      <h4> {resData.info.sla.deliveryTime+" min"}</h4>
     </div>
   )
 }
